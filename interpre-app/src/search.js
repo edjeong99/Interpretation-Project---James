@@ -3,17 +3,17 @@ import './App.css';
 
 
 
-class TopMenu extends Component {
+class Search extends Component {
 
   render() {
 
     return (
      
-        <div className="TopMenu"> 
-             This is Top Menu
+        <div className="Search"> 
+             This is Search
         </div>
     );
   }
 }
 
-export default TopMenu;
+export default Search;

@@ -15,3 +15,5 @@ class SidePanel extends Component {
     );
   }
 }
+
+export default SidePanel;

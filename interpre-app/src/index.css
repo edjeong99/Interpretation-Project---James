@@ -2,4 +2,43 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  	font: normal 16px sans-serif;
+	color: #555;
+}
+
+.Page{
+  display: flex;
+ 	background-color: #3f51b5;
+  flex-direction: column;
+}
+
+.Content{
+    display: flex;
+  	background-color: #555;
+
+}
+
+.TopMenu{
+ 	background-color: orange;
+  height: 70px;
+}
+.MainContent{
+   	background-color: blue;
+    flex-basis: 80%;
+}
+
+
+.SidePanel{
+   	background-color: green;
+    flex-basis: 20%;
+}
+
+.Graph1{
+   	background-color: yellow;
+    height: 500px;
+}
+
+.Search{
+   	background-color: pink;
+    height: 100px;
 }

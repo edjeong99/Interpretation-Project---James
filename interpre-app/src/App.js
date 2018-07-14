@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TopMenu from './topMenu';
-import Graph1 from './graph1';
+import MainContent from './mainContent';
 import SidePanel from './sidePanel';
 
 class App extends Component {
@@ -17,9 +17,13 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
 
-        <TopMenu />
-        <Graph1 />
-        <SidePanel />
+        <div className="Page"> {/* contain all the manu + content of this page. */}
+          <TopMenu />
+          <div className = "Content">  {/*  contain all content of this page*/}
+            <MainContent />
+            <SidePanel />
+          </div>
+        </div>
       </div>
     );
   }
