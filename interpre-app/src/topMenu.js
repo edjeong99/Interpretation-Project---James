@@ -10,7 +10,11 @@ class TopMenu extends Component {
     return (
      
         <div className="TopMenu"> 
-             This is Top Menu
+   
+           <nav>
+              <li><a href="#">dhis2</a></li>
+              <li><a href="#">Sierra Leone</a></li>
+            </nav>
         </div>
     );
   }

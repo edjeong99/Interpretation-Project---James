@@ -10,7 +10,11 @@ class Search extends Component {
     return (
      
         <div className="Search"> 
-             This is Search
+             
+           <form>
+             <i className="fa fa-search fa-2x" aria-hidden="true"></i>
+            <input type="search" placeholder="Search Interpretation"></input>
+            </form>
         </div>
     );
   }

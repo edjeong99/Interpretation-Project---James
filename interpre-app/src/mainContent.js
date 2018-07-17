@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './search';
-import Graph1 from './graph1';
+import Graph from './graph';
 
 class MainContent extends Component {
 
@@ -13,7 +13,7 @@ class MainContent extends Component {
              This is MainContent
                 
         <Search />
-        <Graph1 />
+        <Graph />
       
         </div>
     );

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-
-
+import TopInterpArea from './topInterpArea';
+import TopArthorArea from './topArthorArea';
+import TopCommentatorArea from './topCommentatorArea';
 
 class SidePanel extends Component {
 
@@ -11,6 +12,10 @@ class SidePanel extends Component {
      
         <div className="SidePanel"> 
              This is SidePanel
+             <TopInterpArea />
+              <TopArthorArea />
+               <TopCommentatorArea />
+
         </div>
     );
   }
