@@ -6,6 +6,7 @@ import CommentInputArea from './commentInputArea';
 class Comment extends Component {
 
   render() {
+console.log("comment.js -->" + typeof(this.props.comment) );
 
     return (
      
