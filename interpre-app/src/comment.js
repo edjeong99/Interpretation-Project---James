@@ -6,13 +6,15 @@ import CommentInputArea from './commentInputArea';
 class Comment extends Component {
 
   render() {
-console.log("comment.js -->" + typeof(this.props.comment) );
+console.log("comment.js --> " + this.props.commentData );
+
+  const Comments = (this.props.commentData) ? <CommentDisplay  commentData={this.props.commentData} /> : <div> Loading.. Comment.js.</div>;
 
     return (
      
         <div className="Comment"> 
             
-             <CommentDisplay />
+             {Comments}
              <CommentInputArea />
         </div>
     );

@@ -8,17 +8,21 @@ class Graph extends Component {
  constructor(props){
       super(props);
 
-       this.state = {}
+       this.state = {   
+            open: false,
+            commentData: [],
+            moreTerms: undefined,
+       }
  
   }
  
-  componentDidMount() {
+  componentWillMount() {
   fetch('http://localhost:3000/interpretations.json')
   .then(response => response.json())
   .then( jasonData => {
 
-    this.setState({data : jasonData.interpretations});
-        console.log("graph.js  user = " + this.state.data[0]);
+    this.setState({commentData : jasonData.interpretations});
+        console.log( "graph.js -->  " + this.state.commentData);
 
   });
 
@@ -26,13 +30,15 @@ class Graph extends Component {
 }
 
   render() {
-    
+    const Comments = (this.state.commentData) ? <Comment commentData={this.state.commentData[0]} /> : <div> Loading...</div>;
+
     return (
      
         <div className="Graph"> 
              This is Graph1
            <GraphDisplay />
-           <Comment key="1" comment={this.state.data} />
+           {Comments}
+      
         </div>
     );
   }
