@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import GraphDisplay from './graphDisplay';
 import Comment from './comment';
+import InputWithIcon from './test-material'
 
 
 class Graph extends Component {
@@ -36,6 +37,7 @@ class Graph extends Component {
      
         <div className="Graph"> 
              This is Graph1
+             <InputWithIcon />
            <GraphDisplay />
            {Comments}
       
