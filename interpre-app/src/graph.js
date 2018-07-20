@@ -3,7 +3,7 @@ import './App.css';
 import GraphDisplay from './graphDisplay';
 import Comment from './comment';
 import InputWithIcon from './test-material'
-
+import { delayOnceTimeAction } from './FetchUtil';
 
 class Graph extends Component {
  constructor(props){
@@ -16,19 +16,26 @@ class Graph extends Component {
        }
  
   }
- 
-  componentWillMount() {
+    /*  
+  componentDidMount() {
+   delayOnceTimeAction.bind(a,b,c).then() 
+
+    FetchUtil.searchById( interId, ( dataJson ) => {
+      console.log(dataJson);
+    });
+
   fetch('http://localhost:3000/interpretations.json')
   .then(response => response.json())
   .then( jasonData => {
 
     this.setState({commentData : jasonData.interpretations});
         console.log( "graph.js -->  " + this.state.commentData);
-
   });
-
-
 }
+  */
+
+
+
 
   render() {
     const Comments = (this.state.commentData) ? <Comment commentData={this.state.commentData[0]} /> : <div> Loading...</div>;

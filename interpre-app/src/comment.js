@@ -6,7 +6,7 @@ import CommentInputArea from './commentInputArea';
 class Comment extends Component {
 
   render() {
-console.log("comment.js --> " + this.props.commentData );
+//console.log("comment.js --> " + this.props.commentData );
 
   const Comments = (this.props.commentData) ? <CommentDisplay  commentData={this.props.commentData} /> : <div> Loading.. Comment.js.</div>;
 

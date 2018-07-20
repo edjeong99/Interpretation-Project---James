@@ -7,7 +7,7 @@ class CommentDiplay extends Component {
 
   render() {
 
-console.log("commentDisplay.js --> " + typeof(this.props.commentData) + this.props.commentData );
+//console.log("commentDisplay.js --> " + typeof(this.props.commentData) + this.props.commentData );
 
 
  var date = this.props.commentData.created.slice(0, this.props.commentData.created.indexOf("T"));
