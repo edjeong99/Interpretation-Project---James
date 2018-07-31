@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import GraphDisplay from './graphDisplay';
-import Comment from './comment';
+
 import graph1 from './images/source images/capture_001_08072018_022824.jpg'
 import graph2 from './images/source images/capture_002_08072018_022904.jpg'
 import graph3 from './images/source images/capture_003_08072018_023002.jpg'
 import graph4 from './images/source images/capture_004_08072018_023027.jpg'
 
 
-class Graph extends Component {
+class GraphList extends Component {
  constructor(props){
       super(props);
 
@@ -16,7 +16,7 @@ class Graph extends Component {
             open: false,
             InterpData: [],
             moreTerms: undefined,
-            graphNo : graph1,
+     
        }
 
   }
@@ -58,23 +58,24 @@ class Graph extends Component {
   }
 
 
-
-
   render() {
 
- console.log( this.state.graphNo);
-    const Comments = (this.state.InterpData) ? <Comment InterpData={this.state.InterpData[0]} /> : <div> Loading... graph.js</div>;
-
+ console.log( "graphList.js" + this.props.searched);
+if ( this.props.searched){
+    this.setState ( {InterpData : this.props.displayItem });
+    console.log("graphList.js  if search = true --> " + this.state.InterpData);
+}
+ 
     return (
      
         <div className="Graph"> 
              This is Graph1  
-           <GraphDisplay displayGraph={this.state.graphNo} />
-           {Comments}
+           <GraphDisplay displayItem = {this.state.InterpData} />
+          
       
         </div>
     );
   }
 }
 
-export default Graph;
+export default GraphList;

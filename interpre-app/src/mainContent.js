@@ -1,52 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './search';
-import Graph from './graph';
-import FetchUtil from './FetchUtil';
+import GraphList from './graphList';
+import FetchUtil from './util/FetchUtil';
 
 class MainContent extends Component {
+  constructor(props){
+      super(props);
+
+       this.state = {
+         searchedData :[],
+         searched : false,
+       }
+  }
 
 
-    /*  
-    FetchUtil.searchById( interId, ( dataJson ) => {
-      console.log(dataJson);
-    });
-
-  fetch('http://localhost:3000/interpretations.json')
-  .then(response => response.json())
-  .then( jasonData => {
-
-    this.setState({commentData : jasonData.interpretations});
-        console.log( "graph.js -->  " + this.state.commentData);
-  });
-}
-  */
-
-
-handleIdSearch = (id) => {
+handleIdSearch(id) {
  // alert('mainContent.js ' + id);
 
-FetchUtil.searchById( id, ( dataJson ) => {
-      console.log(dataJson);
+  FetchUtil.searchById( id, ( dataJson ) => {
+      console.log("mainContent.js searchByID  " + dataJson);
+      this.setState({searchedData : dataJson});
     });
-
 }
 
   render() {
-
-
-
+ 
     return (
      
         <div className="MainContent"> 
              This is MainContent
                 
-        <Search onIdSubmit={this.handleIdSearch} />
-        <Graph />
+        <Search onIdSubmit={this.handleIdSearch}  />
+        <GraphList displayItem = {this.state.searchedData} searched = {this.state.searched} />
       
         </div>
     );
-  }
+  } 
 }
 
 

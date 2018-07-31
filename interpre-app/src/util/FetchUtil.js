@@ -7,21 +7,20 @@ export const FetchUtil = {
         .then(response => response.json())
         .then( jasonData => {
             // for loop to match id
-            var interJson = {};
- 
-
-            interJson = jasonData.interpretations.map(function(data, index){
-                if (id === data.id){
-                    console.log ("match found  id = " + data.id);
-                    returnFunc( data);
+            for (var i=0; i < jasonData.interpretations.length; i++){
+                if (id === jasonData.interpretations[i].id){
+                    console.log ("fetchUtil.js  match found  id = " + jasonData.interpretations[i].id);
+                    returnFunc( jasonData.interpretations[i]);
+                    break;
                 }
-              });
+            }
+          });
             
 
           
-        });
-    },
-};
+        },
+    };
+
 
 
 export const dateUtil = {

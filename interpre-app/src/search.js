@@ -9,17 +9,14 @@ constructor(props) {
     this.state = {value: ''};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
-handleSubmit(event) {
-  	event.preventDefault();
-  console.log ("search.js handleSubmit value = " + this.state.value);
-}
+
 
 handleSubmit2 = (e) =>{
   	e.preventDefault();
@@ -32,13 +29,7 @@ handleSubmit2 = (e) =>{
     return (
      
         <div className="Search"> 
-         {/*}    
-           <form onSubmit={this.handleSubmit}>
-             <i className="fa fa-search fa-2x" aria-hidden="true"></i>
-            <input type="search" className="searchId" placeholder="Search Interpretation" ref="id" value={this.state.value} onChange={this.handleChange}></input>
-            <button type="submit" value="Submit">Submit</button>
-            </form>
-*/}
+
             <div>
 							<form onSubmit={this.handleSubmit2}>
 								<div className="form-group">
