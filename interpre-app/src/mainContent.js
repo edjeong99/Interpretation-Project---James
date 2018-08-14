@@ -9,19 +9,31 @@ class MainContent extends Component {
       super(props);
 
        this.state = {
-         searchedData :[],
+         InterpData :[],
          searched : false,
        }
   }
 
+componentDidMount() {
+ 
+  fetch('http://localhost:3000/interpretations.json')
+  .then(response => response.json())
+  .then( jasonData => {
 
-handleIdSearch(id) {
- // alert('mainContent.js ' + id);
-
-  FetchUtil.searchById( id, ( dataJson ) => {
-      console.log("mainContent.js searchByID  " + dataJson);
-      this.setState({searchedData : dataJson});
+    this.setState({InterpData : jasonData.interpretations});
+   //     console.log( "graph.js -->  " + this.state.InterpData);
     });
+  
+ }
+
+handleIdSearch = (id)=>{
+
+   FetchUtil.searchById( id, ( dataJson ) => {
+       this.setState({InterpData : dataJson});
+       console.log("mainContent.js searchByID  " + this.state.InterpData);
+    });
+
+
 }
 
   render() {
@@ -32,7 +44,7 @@ handleIdSearch(id) {
              This is MainContent
                 
         <Search onIdSubmit={this.handleIdSearch}  />
-        <GraphList displayItem = {this.state.searchedData} searched = {this.state.searched} />
+        <GraphList displayItem = {this.state.InterpData} />
       
         </div>
     );

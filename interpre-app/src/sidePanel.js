@@ -13,8 +13,8 @@ class SidePanel extends Component {
         <div className="SidePanel"> 
              This is SidePanel
              <TopInterpArea />
-              <TopArthorArea />
-               <TopCommentatorArea />
+             <TopArthorArea />
+             <TopCommentatorArea />
 
         </div>
     );

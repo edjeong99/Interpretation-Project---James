@@ -1,7 +1,7 @@
 export const FetchUtil = {
     // bind: function (delay, id, action) {
     searchById( id, returnFunc ) {
-        console.log("searchById  id = " + id);
+ //       console.log("searchById  id = " + id);
 
         fetch('http://localhost:3000/interpretations.json')
         .then(response => response.json())
@@ -11,7 +11,8 @@ export const FetchUtil = {
                 if (id === jasonData.interpretations[i].id){
                     console.log ("fetchUtil.js  match found  id = " + jasonData.interpretations[i].id);
                     returnFunc( jasonData.interpretations[i]);
-                    break;
+                    //return jasonData.interpretations[i];
+                    
                 }
             }
           });
@@ -19,7 +20,109 @@ export const FetchUtil = {
 
           
         },
-    };
+
+  // Below will return list of authors and number of entry for each authors.     
+  // use return function instead of return
+
+    retrieveTopAuthors(returnFunc){
+        let topAuthors = [];
+        let found = false;
+
+        fetch('http://localhost:3000/interpretations.json')
+        .then(response => response.json())
+        .then( jasonData => {
+// find list of authors with counting
+            for (let i=0; i < jasonData.interpretations.length; i++){  
+                found = false;
+            
+                for (let j=0 ; j < topAuthors.length; j++ ){
+                    if (topAuthors[j].name === jasonData.interpretations[i].user.name){
+                        topAuthors[j].count++;
+                        found = true;
+                         break;
+                    }
+                }
+                
+                if (!found){
+                        topAuthors.push({name : jasonData.interpretations[i].user.name, count : 1});
+                 }  
+            }
+    //        console.log("fetchUtil.js after loop  final author list--> " + topAuthors);
+          
+           // sort the listing
+            topAuthors.sort(function(a, b) {
+              return b.count - a.count;
+            });
+        
+            returnFunc(topAuthors);
+
+        });  
+
+    },
+           
+
+
+ // Below will return list of authors and number of entry for each authors.     
+  // use return function instead of return
+
+    retrievetopCommentators(returnFunc){
+        let topCommentators = [];
+        let found = false;
+
+        fetch('http://localhost:3000/interpretations.json')
+        .then(response => response.json())
+        .then( jasonData => {
+// find list of authors with counting
+            for (let i=0; i < jasonData.interpretations.length; i++){  
+                found = false;
+               
+                if(jasonData.interpretations[i].comments !== null && jasonData.interpretations[i].comments !== undefined){
+                    //  console.log("retrieveTopCommentator.js 1st LOOP--> " + i + "  " + jasonData.interpretations[i].comments);
+                    //  console.log( jasonData.interpretations[i].comments);
+
+                     for (let j = 0; j < jasonData.interpretations[i].comments.length; j++){
+                         
+                        topCommentators.forEach(function (commentator){
+                            // console.log(commentator + "  "+ jasonData.interpretations[i].comments[j].user.name);
+
+                                if (commentator.name === jasonData.interpretations[i].comments[j].user.name ){
+                                    commentator.count++;
+                                    found = true;
+                                    // console.log("retrieveTopCommentator.js interpre name MATCHED--> " + commentator.name);
+
+                                }
+                            });
+                    
+                        if (!found){
+                                topCommentators.push({name : jasonData.interpretations[i].comments[j].user.name, count : 1});
+                                // console.log("fetchUtil.js interpre new name added--> " + jasonData.interpretations[i].comments[j].user.name);
+                        }  
+                    }
+                }    
+                // else{
+                //     console.log("retrieveTopCommentator.js NULL or UNDEFINED");
+                //     console.log(jasonData.interpretations[i]);
+                // }
+            }
+       //     console.log("retrieveTopCommentator.js after loop  final topCommentators list--> " + topCommentators);
+            
+           // sort the listing
+            topCommentators.sort(function(a, b) {
+              return b.count - a.count;
+            });
+        
+            returnFunc(topCommentators);
+
+        });  
+
+    },
+
+
+
+};
+
+
+
 
 
 
