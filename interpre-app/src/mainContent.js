@@ -41,10 +41,9 @@ handleIdSearch = (id)=>{
     return (
      
         <div className="MainContent"> 
-             This is MainContent
-                
-        <Search onIdSubmit={this.handleIdSearch}  />
-        <GraphList displayItem = {this.state.InterpData} />
+                            
+          <Search onIdSubmit={this.handleIdSearch}  />
+          <GraphList displayItem = {this.state.InterpData} />
       
         </div>
     );

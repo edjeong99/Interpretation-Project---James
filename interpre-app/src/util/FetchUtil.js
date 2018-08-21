@@ -35,13 +35,13 @@ export const FetchUtil = {
             for (let i=0; i < jasonData.interpretations.length; i++){  
                 found = false;
             
-                for (let j=0 ; j < topAuthors.length; j++ ){
-                    if (topAuthors[j].name === jasonData.interpretations[i].user.name){
-                        topAuthors[j].count++;
-                        found = true;
-                         break;
+                    for (let j=0 ; j < topAuthors.length; j++ ){
+                        if (topAuthors[j].name === jasonData.interpretations[i].user.name){
+                            topAuthors[j].count++;
+                            found = true;
+                            break;
+                        }
                     }
-                }
                 
                 if (!found){
                         topAuthors.push({name : jasonData.interpretations[i].user.name, count : 1});

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TopMenu from './topMenu';
 import MainContent from './mainContent';
@@ -10,6 +9,12 @@ class App extends Component {
     return (
       <div className="App">
         
+  
+  
+  
+  
+  
+  
         <div className="Page"> {/* contain all the manu + content of this page. */}
           <TopMenu />
           <div className = "Content">  {/*  contain all content of this page*/}

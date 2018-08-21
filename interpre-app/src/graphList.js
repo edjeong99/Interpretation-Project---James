@@ -10,10 +10,50 @@ import graph4 from './images/source images/capture_004_08072018_023027.jpg'
 
 class GraphList extends Component {
 
+constructor(props){
+    super(props);
+    this.state = {
+        items:2,
+        loadingState : false,
+    };
+}
+
+componentDidMount() {
+    // console.log("inside of componentDidMount");
+    let scrollDiv = document.getElementById("scrollDiv")
+    this.refs.iScroll.addEventListener("scroll", () => {
+        // console.log("scroll EventListner  " +this.refs.iScroll.scrollTop +"  "+ this.refs.iScroll.clientHeight + "  " +this.refs.iScroll.scrollHeight );
+      if (!this.state.loadingState && this.refs.iScroll.scrollTop + this.refs.iScroll.clientHeight >=this.refs.iScroll.scrollHeight-50){
+        this.loadMoreItems();
+      }
+    });
+  }
+//316, 600  height 1116
+displayItems() {
+    var items = [];
+   if (this.props.displayItem.length > 0){
+        for (var i = 0; i < this.state.items; i++) {
+            console.log( i + "inside display loop " + this.props.displayItem[i]);
+        items.push(<li key={i}><GraphDisplay displayItem = {this.props.displayItem[i]} /></li>);
+        }
+    }
+    else {
+        items.push(<li key={i}><GraphDisplay displayItem = {this.props.displayItem} /> </li>);
+    }    
+    return items;
+}
+
+  loadMoreItems() {
+       console.log("LOAD MOREA" + this.state.items);
+    this.setState({ loadingState: true });
+    setTimeout(() => {
+      this.setState({ items: this.state.items + 2, loadingState: false });
+    }, 3000);
+  }
 
   render() {
 
-let graphDisplay ='';
+/* let graphDisplay ='';
 
 // console.log( "graphList.js  length  = " +  this.props.displayItem.length );
 // console.log( this.props.displayItem);
@@ -27,14 +67,17 @@ else {
     graphDisplay = <GraphDisplay displayItem = {this.props.displayItem} /> ;
    }    
 // console.log( graphDisplay );
-
+*/
     return (
      
-        <div className="Graph"> 
-             This is Graph1  
-           {graphDisplay}
-          
-      
+        <div className="vc Graphs" id = "scrollDiv"
+        ref="iScroll"
+        style={{height:"1020px", overflow:"scroll"}}> 
+            <ul>
+               {this.displayItems()}
+           </ul>
+           
+           {this.state.loadingState ? <p className="loading"> loading More Items.. </p> : ""}
         </div>
     );
   }

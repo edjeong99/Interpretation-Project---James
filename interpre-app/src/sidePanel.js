@@ -6,6 +6,8 @@ import TopCommentatorArea from './topCommentatorArea';
 
 class SidePanel extends Component {
 
+
+
   render() {
 
     return (

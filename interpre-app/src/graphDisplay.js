@@ -10,6 +10,9 @@ import graph4 from './images/source images/capture_004_08072018_023027.jpg'
 
 class GraphDisplay extends Component {
 
+
+
+
   render() {
 // console.log("graphDisplay.js --> " + typeof(this.props.displayItem) );
 // console.log( this.props.displayItem );
@@ -23,7 +26,7 @@ class GraphDisplay extends Component {
      
         <div className="GraphDisplay"> 
             
-          <img src={graph1} alt="sample graph" />
+          <img className="Graph" src={graph1} alt="sample graph" />
           {Comments}
         </div>
     );
