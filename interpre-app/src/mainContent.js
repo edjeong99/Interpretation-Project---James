@@ -10,8 +10,9 @@ class MainContent extends Component {
       super(props);
 
        this.state = {
-         InterpData :[],
-         searched : false,
+             searched : false,
+              InterpData :[],
+    
        }
   }
 
